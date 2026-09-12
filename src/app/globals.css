@@ -1,26 +1,49 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fcfcfb;
+  --surface: #ffffff;
+  --surface-alt: #f8f8f6;
+  --ink: #17181c;
+  --muted: #43454c;
+  --muted-soft: #75777f;
+  --border: #e8e8e4;
+  --border-strong: #dcdcd7;
+  --sky: #d0edfb;
+  --accent: #3b63f2;
+  --accent-soft: #eaf0ff;
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-muted-soft: var(--muted-soft);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-sky: var(--sky);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+}
+
+.hero-gradient {
+  background:
+    radial-gradient(circle at 50% 30%, rgba(208, 237, 251, 0.55), rgba(208, 237, 251, 0) 55%),
+    linear-gradient(180deg, #fcfcfb 0%, #f8f8f6 100%);
+}
+
+.section-divider {
+  border-top: 1px solid var(--border);
 }
