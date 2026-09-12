@@ -3,9 +3,13 @@
  * Claude Code hook: appends verbatim prompt/response pairs to .agent-logs/.
  * Wired to UserPromptSubmit and Stop in ../settings.json.
  * Must never throw or exit non-zero — a logging failure must not interrupt the session.
+ * Also commits each appended entry immediately (git add + commit scoped to that one
+ * log file) so capture lands in git history as it happens, per the assignment's
+ * "commit as you go" rule, instead of relying on someone remembering to batch-commit.
  */
 const fs = require("fs");
 const path = require("path");
+const { execFileSync } = require("child_process");
 
 const REPO_ROOT = process.env.CLAUDE_PROJECT_DIR || path.resolve(__dirname, "..", "..");
 const LOG_DIR = path.join(REPO_ROOT, ".agent-logs");
@@ -188,6 +192,20 @@ function logError(err, context) {
   }
 }
 
+function commitLogFile(file, message) {
+  // Best-effort: if this fails (e.g. a concurrent session holds the git lock, or a
+  // commit hook rejects it), the capture append above has already succeeded and is
+  // never lost — it just stays uncommitted until the next successful commit picks it
+  // up. Failures are logged, never thrown.
+  try {
+    execFileSync("git", ["add", "--", file], { cwd: REPO_ROOT });
+    execFileSync("git", ["commit", "-m", message], { cwd: REPO_ROOT });
+  } catch (e) {
+    const detail = e && e.stderr && e.stderr.length ? `${e.stack}\n${e.stderr.toString()}` : e;
+    logError(detail, "git-commit");
+  }
+}
+
 function main() {
   let input;
   try {
@@ -221,6 +239,10 @@ function main() {
       text: promptText,
     });
     updateFrontmatter(file, { last_prompt_time: nowIso, model });
+    commitLogFile(
+      file,
+      `Capture: PROMPT #${num} (session ${shortId(sessionId)})\n\nCo-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>`
+    );
     return;
   }
 
@@ -242,6 +264,10 @@ function main() {
       text: tail.lastAssistantText,
     });
     updateFrontmatter(file, { total_exchanges: num, model });
+    commitLogFile(
+      file,
+      `Capture: RESPONSE #${num} (session ${shortId(sessionId)})\n\nCo-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>`
+    );
     return;
   }
 }

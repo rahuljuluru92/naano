@@ -62,7 +62,12 @@ From the "8x Assignment — Agent Capture Setup" doc:
 - [ ] Optional, not blocking: a genuinely fresh third session sending the literal
       `CAPTURE TEST — 8x assignment, rahul juluru` canary, if a clean literal pair
       matters beyond the substantive proof already on record
-- [ ] Going forward: commit as work happens, not in batches — that's the one item on
-      this list that isn't a one-time fix
+- [x] Going forward: commit as work happens, not in batches — automated 2026-09-12 in
+      `capture-log.js` itself (git add + commit scoped to just the one changed log file,
+      immediately after every PROMPT/RESPONSE append, on both `UserPromptSubmit` and
+      `Stop`). No longer a manual habit to remember. Best-effort: if the commit step
+      fails (lock contention from a concurrent session, a rejected commit hook), the
+      capture append itself still succeeds and is never lost — check
+      `.claude/hooks/.capture-errors.log` if expected commits stop showing up.
 - [ ] Re-check this table at the start of any new session on this repo; it is easy to
       lose track of again, as already happened once
