@@ -34,6 +34,26 @@ From the "8x Assignment — Agent Capture Setup" doc:
    pasted raw, and anything tried first that didn't work.
 8. Do not start building the actual product until that check is green.
 
+## Product build — phase plan (0–8, from `reflective-hatching-waffle.md`)
+
+The Supabase/auth/campaigns rebuild referenced elsewhere in this file is
+**not** a 4-phase project — the actual saved plan
+(`~/.claude/plans/reflective-hatching-waffle.md`) scopes it as 9 phases,
+numbered 0–8. This table tracks build progress; the capture-compliance table
+below tracks a *different* thing (logging/capture rules), not the product.
+
+| Phase | Scope | Status |
+|---|---|---|
+| 0 | Supabase foundations — schema, RLS, matching algorithm | ✅ Done — commit `e4a0b68` |
+| 1 | Real auth, roles, route protection | ✅ Done — commit `efb0aa9` |
+| 2 | Brand/creator profile forms | ✅ Done — commit `05fa288` |
+| 3 | Campaign brief builder + real marketplace matching | ✅ Done — commit `b98e325` |
+| 4 | Creator side & pipeline — inbox accept/decline, post-submission form, brand pipeline view, approve→mock-payout | 🔄 In progress |
+| 5 | Dashboards & analytics — real aggregate stats on both dashboard homes | ⬜ Not started |
+| 6 | Admin (stretch) | ❌ **Dropped 2026-09-12, out of scope for this 24-hour build** — explicitly cut to protect time for Phase 7 polish and Phase 8 deploy. Not being built unless separately re-scoped in. |
+| 7 | Polish — consolidate `lib/pricing.ts` duplication, empty/error states, responsive QA | ⬜ Not started |
+| 8 | Seed v2 (rich demo data) + Vercel deploy | ⬜ Not started |
+
 ## What's actually done vs. missing (verified 2026-09-12, session `670ee764`)
 
 | Requirement | Status | Detail |
@@ -48,7 +68,7 @@ From the "8x Assignment — Agent Capture Setup" doc:
 | `author:` field correct | ✅ Confirmed 2026-09-12 | User confirmed: `rahul juluru` (not a GitHub handle, but the name they gave when asked directly). `AUTHOR` constant in `capture-log.js` updated, and the frontmatter + header line in all three existing `.agent-logs/*.md` files corrected retroactively (metadata fix only — captured entry bodies untouched). |
 | `CAPTURE-TEST.md` exists | ✅ Done 2026-09-12 | Written honestly, including the failed canary attempt and the fact the literal two-canary procedure was never completed to the letter — see [`CAPTURE-TEST.md`](CAPTURE-TEST.md) for the full, unretouched account. |
 | `.agent-logs/` committed | ✅ Done 2026-09-12 | Committed as part of a reconstructed, phase-grouped commit sequence (see commit log) — not true incrementality, since nothing was committed as-you-go originally. That gap is documented in `CAPTURE-TEST.md` rather than hidden. |
-| Capture verified *before* building started | ❌ Violated | Building (the full Supabase/auth/campaigns rebuild, Phases 0-3) proceeded before the capture check was ever confirmed green. Already flagged to the user directly; not something to quietly backfill or hide — per the doc's own philosophy, leave this in the log as a real wrong turn, don't retcon it.
+| Capture verified *before* building started | ❌ Violated | Building (the full Supabase/auth/campaigns rebuild — Phases 0-3 of the 0-8 plan; see phase table above) proceeded before the capture check was ever confirmed green. Already flagged to the user directly; not something to quietly backfill or hide — per the doc's own philosophy, leave this in the log as a real wrong turn, don't retcon it.
 
 ## Status as of 2026-09-12 (session `670ee764`)
 
