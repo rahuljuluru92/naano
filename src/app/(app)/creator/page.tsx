@@ -8,13 +8,22 @@ export default async function CreatorHomePage() {
     <div>
       <h1 className="text-2xl font-semibold tracking-tight text-ink">Creator hub</h1>
       <p className="mt-2 text-muted">You&apos;re signed in as a creator.</p>
-      <p className="mt-6 rounded-xl border border-border bg-white p-6 text-sm text-muted">
-        Start by{" "}
-        <Link href="/creator/profile" className="font-medium text-accent">
-          completing your creator profile →
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+        <Link
+          href="/creator/profile"
+          className="flex-1 rounded-2xl border border-border bg-white p-6 hover:border-border-strong"
+        >
+          <p className="font-semibold text-ink">Your profile</p>
+          <p className="mt-1 text-sm text-muted-soft">What brands see when they&apos;re matching campaigns →</p>
         </Link>
-        . Incoming campaign invites and post submissions land in the next phases of the build.
-      </p>
+        <Link
+          href="/creator/bookings"
+          className="flex-1 rounded-2xl border border-border bg-white p-6 hover:border-border-strong"
+        >
+          <p className="font-semibold text-ink">Bookings</p>
+          <p className="mt-1 text-sm text-muted-soft">Invites, active collaborations, and submissions →</p>
+        </Link>
+      </div>
     </div>
   );
 }

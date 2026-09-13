@@ -33,12 +33,14 @@ export default async function DashboardPage() {
           <p className="font-semibold text-ink">Company profile</p>
           <p className="mt-1 text-sm text-muted-soft">What creators see when you brief a campaign →</p>
         </Link>
+        <Link
+          href="/dashboard/pipeline"
+          className="flex-1 rounded-2xl border border-border bg-white p-6 hover:border-border-strong"
+        >
+          <p className="font-semibold text-ink">Pipeline</p>
+          <p className="mt-1 text-sm text-muted-soft">Invites, submissions, approvals, and payouts →</p>
+        </Link>
       </div>
-
-      <p className="mt-6 rounded-xl border border-dashed border-border-strong bg-white p-6 text-sm text-muted-soft">
-        Pipeline tracking (invites, submissions, approvals, payouts) lands in the next phase of the
-        build.
-      </p>
     </div>
   );
 }
