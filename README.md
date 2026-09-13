@@ -1,4 +1,4 @@
-# naano.com clone: 8x Software Engineer application
+# naano.com clone: 
 
 A pixel-close clone of [naano.com](https://naano.com) (the B2B LinkedIn creator
 marketplace), built as prep for the 8x "Clone naano.com" take-home brief.
