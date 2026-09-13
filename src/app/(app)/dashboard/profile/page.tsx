@@ -1,5 +1,6 @@
 import { verifySession, requireRole } from "@/lib/auth/dal";
 import BrandProfileForm from "@/components/profile/BrandProfileForm";
+import BackLink from "@/components/BackLink";
 
 export default async function BrandProfilePage() {
   const profile = await requireRole("brand");
@@ -13,6 +14,7 @@ export default async function BrandProfilePage() {
 
   return (
     <div>
+      <BackLink href="/dashboard" label="Back to dashboard" />
       <h1 className="text-2xl font-semibold tracking-tight text-ink">Company profile</h1>
       <p className="mt-2 text-muted">
         This is what creators and the naano team see when you brief a campaign.

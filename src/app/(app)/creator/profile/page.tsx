@@ -1,5 +1,6 @@
 import { verifySession, requireRole } from "@/lib/auth/dal";
 import CreatorProfileForm from "@/components/profile/CreatorProfileForm";
+import BackLink from "@/components/BackLink";
 
 export default async function CreatorProfilePage() {
   const profile = await requireRole("creator");
@@ -13,6 +14,7 @@ export default async function CreatorProfilePage() {
 
   return (
     <div>
+      <BackLink href="/creator" label="Back to creator hub" />
       <h1 className="text-2xl font-semibold tracking-tight text-ink">Creator profile</h1>
       <p className="mt-2 text-muted">
         This is what brands see when matching campaigns to creators in the marketplace.

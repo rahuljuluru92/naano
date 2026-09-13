@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { requireRole, verifySession } from "@/lib/auth/dal";
+import BackLink from "@/components/BackLink";
 
 export default async function CampaignsListPage() {
   const profile = await requireRole("brand");
@@ -13,6 +14,7 @@ export default async function CampaignsListPage() {
 
   return (
     <div>
+      <BackLink href="/dashboard" label="Back to dashboard" />
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold tracking-tight text-ink">Campaigns</h1>
         <Link

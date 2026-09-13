@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireRole, verifySession } from "@/lib/auth/dal";
 import { VERTICAL_LABELS, type Vertical } from "@/lib/verticals";
+import BackLink from "@/components/BackLink";
 
 export default async function CampaignDetailPage({
   params,
@@ -26,6 +27,7 @@ export default async function CampaignDetailPage({
 
   return (
     <div>
+      <BackLink href="/dashboard/campaigns" label="Back to campaigns" />
       <div className="flex items-center gap-3">
         <h1 className="text-2xl font-semibold tracking-tight text-ink">{campaign.title}</h1>
         <span className="rounded-full border border-border-strong px-3 py-1 text-xs font-semibold uppercase tracking-wide text-muted-soft">

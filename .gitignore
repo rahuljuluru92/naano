@@ -43,3 +43,6 @@ next-env.d.ts
 
 # claude code hook debug output (not part of the capture log submission)
 .claude/hooks/.capture-errors.log
+
+# supabase CLI local cache (not project config)
+supabase/.temp

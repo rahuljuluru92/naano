@@ -3,6 +3,7 @@ import { requireRole, verifySession } from "@/lib/auth/dal";
 import { rankCreators, type MatchableCampaign, type MatchableCreator } from "@/lib/matching";
 import InitialsAvatar from "@/components/InitialsAvatar";
 import InviteButton from "@/components/campaigns/InviteButton";
+import BackLink from "@/components/BackLink";
 import { VERTICAL_LABELS, type Vertical } from "@/lib/verticals";
 
 export default async function CampaignMatchesPage({
@@ -54,6 +55,7 @@ export default async function CampaignMatchesPage({
 
   return (
     <div>
+      <BackLink href={`/dashboard/campaigns/${campaign.id}`} label="Back to campaign" />
       <h1 className="text-2xl font-semibold tracking-tight text-ink">
         Matches for &ldquo;{campaign.title}&rdquo;
       </h1>
