@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { requireRole, verifySession } from "@/lib/auth/dal";
 import InitialsAvatar from "@/components/InitialsAvatar";
 import ApproveButton from "@/components/bookings/ApproveButton";
@@ -62,7 +63,11 @@ export default async function PipelinePage() {
       <div className="mt-8 flex flex-col gap-8">
         {!hasAnyBookings && (
           <p className="rounded-xl border border-dashed border-border-strong bg-white p-6 text-sm text-muted-soft">
-            No invites yet. Find matching creators from a campaign to get started.
+            No invites yet.{" "}
+            <Link href="/dashboard/campaigns" className="font-medium text-accent">
+              Find matching creators from a campaign
+            </Link>{" "}
+            to get started.
           </p>
         )}
 

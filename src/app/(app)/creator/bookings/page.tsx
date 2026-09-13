@@ -48,7 +48,11 @@ export default async function CreatorBookingsPage() {
       <div className="mt-8 flex flex-col gap-3">
         {(!bookings || bookings.length === 0) && (
           <p className="rounded-xl border border-dashed border-border-strong bg-white p-6 text-sm text-muted-soft">
-            No invites yet. Complete your profile so brands can find and invite you.
+            No invites yet.{" "}
+            <Link href="/creator/profile" className="font-medium text-accent">
+              Complete your profile
+            </Link>{" "}
+            so brands can find and invite you.
           </p>
         )}
         {bookings?.map((b) => {

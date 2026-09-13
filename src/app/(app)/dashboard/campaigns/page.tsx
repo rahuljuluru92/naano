@@ -28,7 +28,11 @@ export default async function CampaignsListPage() {
       <div className="mt-8 flex flex-col gap-3">
         {(!campaigns || campaigns.length === 0) && (
           <p className="rounded-xl border border-dashed border-border-strong bg-white p-6 text-sm text-muted-soft">
-            No campaigns yet. Create your first brief to start matching with creators.
+            No campaigns yet.{" "}
+            <Link href="/dashboard/campaigns/new" className="font-medium text-accent">
+              Create your first brief
+            </Link>{" "}
+            to start matching with creators.
           </p>
         )}
         {campaigns?.map((c) => (
