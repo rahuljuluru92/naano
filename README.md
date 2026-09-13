@@ -51,18 +51,8 @@ delayed if that limit has been hit recently.
 
 Knowing what to leave out mattered as much as what got built.
 
-- **Phase 6 (an admin dashboard) was dropped entirely**, not trimmed. In a
-  24-hour budget it competed directly with polish and actually deploying,
-  and a cross-account admin console nobody but the candidate would ever
-  click into is a worse use of that time than a product that works cleanly
-  end-to-end. Cut on purpose, documented as cut, not quietly skipped.
-- **Avatar/logo uploads are a pasted image URL**, not a real Supabase
-  Storage upload. Creators and brands without one get a deterministic
-  initials/color-block avatar (`InitialsAvatar.tsx`) instead. Real Storage
-  uploads (signed URLs, bucket policies, CORS config) were in the original
-  plan, but for a field that's cosmetic either way, that setup cost wasn't
-  worth paying, so it was scoped out upfront rather than something the
-  build ran into and worked around mid-flight.
+- **Phase 6 (an admin dashboard) was dropped entirely**, was intentionally left for future development. It was not essential to the current version, so I chose to focus on the core creator and brand experience first and leave the admin dashboard as a potential addition in a future phase.
+- **Avatar/logo uploads are a pasted image URL**, Creators and brands without an image are given a deterministic initials/color-block avatar (InitialsAvatar.tsx) instead. A full Supabase Storage implementation with signed URLs, bucket policies, and CORS configuration was part of the original longer-term plan, but since avatars and logos are primarily cosmetic, I decided to leave the full upload system for future development rather than add it to the current scope.
 
 ## Stack
 
